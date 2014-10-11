@@ -42,7 +42,7 @@ Additional resources
 You may want to use the following formulas, too:
 
 * `saltstack-java-formula <https://github.com/bechtoldt/saltstack-java-formula>`_
-* `sysctl-formula <https://github.com/bechtoldt/saltstack-sysctl-formula>`_
+* `saltstack-sysctl-formula <https://github.com/bechtoldt/saltstack-sysctl-formula>`_
 
 Templates
 ---------

@@ -1,11 +1,32 @@
 {% load_yaml as rawmap_osfam %}
 Debian:
-  foo: Debian family
-RedHat:
-  foo: RedHat family
-{% endload %}
-
-{% load_yaml as rawmap_os %}
-CentOS:
-  foo: CentOS specific
+  repo:
+    url: http://packages.elasticsearch.org/elasticsearch/1.3/debian
+    dist: stable
+    comps: main
+    keyurl: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+  pkgs:
+    - elasticsearch
+  service: {}
+  config:
+    manage:
+      - defaults_file
+      - main
+    defaults_file:
+      path: /etc/default/elasticsearch
+    main: {}
+    logging: {}
+RedHat: {}
+  repo: {}
+  pkgs:
+    - elasticsearch
+  service: {}
+  config:
+    manage:
+      - defaults_file
+      - main
+    defaults_file:
+      path: /etc/sysconfig/elasticsearch
+    main: {}
+    logging: {}
 {% endload %}

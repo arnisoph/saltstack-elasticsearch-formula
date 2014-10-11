@@ -1,0 +1,11 @@
+{% load_yaml as rawmap_osfam %}
+Debian:
+  foo: Debian family
+RedHat:
+  foo: RedHat family
+{% endload %}
+
+{% load_yaml as rawmap_os %}
+CentOS:
+  foo: CentOS specific
+{% endload %}

@@ -39,7 +39,7 @@ Setup and configure Elasticsearch
 Additional resources
 --------------------
 
-You may want to use the following formulas, too:
+You may find the following formulas helpful, too:
 
 * `saltstack-java-formula <https://github.com/bechtoldt/saltstack-java-formula>`_
 * `saltstack-sysctl-formula <https://github.com/bechtoldt/saltstack-sysctl-formula>`_

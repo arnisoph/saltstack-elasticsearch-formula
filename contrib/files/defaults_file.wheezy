@@ -19,5 +19,5 @@
 {%- set _defaults = datamap.defaults|default(_default_settings) -%}
 
 {%- for k, v in _defaults|dictsort -%}
-{{ k }}="{{ v }}"
+{{ k }}="{{ v }}"
 {% endfor -%}

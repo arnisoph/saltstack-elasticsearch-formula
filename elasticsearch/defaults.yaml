@@ -16,7 +16,7 @@ Debian:
       path: /etc/default/elasticsearch
     main: {}
     logging: {}
-RedHat: {}
+RedHat:
   repo: {}
   pkgs:
     - elasticsearch

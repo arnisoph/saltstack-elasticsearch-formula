@@ -1,8 +1,7 @@
 #!jinja|yaml
 
 {% from 'elasticsearch/defaults.yaml' import rawmap_osfam with context %}
-{% from 'elasticsearch/defaults.yaml' import rawmap_os with context %}
-{% set datamap = salt['grains.filter_by'](rawmap_osfam, merge=salt['grains.filter_by'](rawmap_os|default({}), grain='os', merge=salt['pillar.get']('elasticsearch:lookup'))) %}
+{% set datamap = salt['grains.filter_by'](rawmap_osfam, grain='os', merge=salt['pillar.get']('elasticsearch:lookup')) %}
 
 include: {{ datamap.sls_include|default([]) }}
 extend: {{ datamap.sls_extend|default({}) }}
@@ -29,7 +28,7 @@ elasticsearch:
 
 {% if 'defaults_file' in datamap.config.manage|default([]) %}
   {% set f = datamap.config.defaults_file %}
-defaults_file:
+elasticsearch_defaults_file:
   file:
     - managed
     - name: {{ f.path }}
@@ -46,7 +45,7 @@ defaults_file:
 
 {% if 'main' in datamap.config.manage|default([]) %}
   {% set f = datamap.config.main %}
-main:
+elasticsearch_config_main:
   file:
     - managed
     - name: {{ f.path|default('/etc/elasticsearch/elasticsearch.yml') }}
@@ -63,7 +62,7 @@ main:
 
 {% if 'logging' in datamap.config.manage|default([]) %}
   {% set f = datamap.config.logging %}
-logging:
+elasticsearch_config_logging:
   file:
     - managed
     - name: {{ f.path|default('/etc/elasticsearch/logging.yml') }}
@@ -81,7 +80,7 @@ logging:
 {% for p in datamap.plugins|default([]) %}
   {% set java_home = salt['pillar.get']('elasticsearch:lookup:defaults:JAVA_HOME', false) %}
 
-install_plugin_{{ p.name }}:
+elasticsearch_install_plugin_{{ p.name }}:
   cmd:
     - run
     - name: {% if java_home %}export JAVA_HOME='{{ java_home }}' && {% endif %}{{ datamap.basepath|default('/usr/share/elasticsearch') }}/bin/plugin -v -t 10s --url '{{ p.url }}' --install '{{ p.name }}'

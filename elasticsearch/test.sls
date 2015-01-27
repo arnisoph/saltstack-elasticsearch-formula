@@ -7,5 +7,6 @@ test file with data:
   file.managed:
     - name: /tmp/test.txt
     - source: salt://elasticsearch/files/test.jinja
+    - template: jinja
     - context:
         datamap: {{ datamap }}

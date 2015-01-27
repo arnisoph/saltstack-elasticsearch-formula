@@ -78,3 +78,4 @@ OS Compatibility
 Tested with:
 
 * GNU/ Linux Debian Wheezy
+* Ubuntu 14.04 (Trusty)

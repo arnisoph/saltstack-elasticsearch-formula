@@ -7,15 +7,15 @@ Debian:
     keyurl: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
   pkgs:
     - elasticsearch
-#  service: {}
+  service: {}
   config:
     manage:
       - defaults_file
       - main
     defaults_file:
       path: /etc/default/elasticsearch
-#    main: {}
-#    logging: {}
+    main: {}
+    logging: {}
 RedHat:
   repo: {}
   pkgs:

@@ -83,6 +83,6 @@ elasticsearch_config_logging:
 elasticsearch_install_plugin_{{ p.name }}:
   cmd:
     - run
-    - name: {% if java_home %}export JAVA_HOME='{{ java_home }}' && {% endif %}{{ datamap.basepath|default('/usr/share/elasticsearch') }}/bin/plugin -v -t 10s --url '{{ p.url }}' --install '{{ p.name }}'
+    - name: {% if java_home %}export JAVA_HOME='{{ java_home }}' && {% endif %}{{ datamap.basepath|default('/usr/share/elasticsearch') }}/bin/plugin -v -t 30s --url '{{ p.url }}' --install '{{ p.name }}'
     - unless: test -d '{{ datamap.basepath|default('/usr/share/elasticsearch') }}/plugins/{{ p.installed_name }}'
 {% endfor %}

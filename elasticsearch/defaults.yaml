@@ -1,5 +1,5 @@
 {% load_yaml as rawmap_osfam %}
-Ububtu:
+Ubuntu:
   repo:
     url: http://packages.elasticsearch.org/elasticsearch/1.4/debian
     dist: stable

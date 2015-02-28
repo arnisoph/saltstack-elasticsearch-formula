@@ -18,7 +18,7 @@ elasticsearch_repo:
 elasticsearch_repo:
   pkgrepo:
     - managed
-    - name: elasticsearch.repo 
+    - name: elasticsearch.repo
     - humanname: "Elasticsearch repository"
     - baseurl: {{ datamap.repo.url }}
     - key_url: {{ datamap.repo.keyurl }}
@@ -88,10 +88,15 @@ elasticsearch_config_logging:
 
 {% for p in datamap.plugins|default([]) %}
   {% set java_home = salt['pillar.get']('elasticsearch:lookup:defaults:JAVA_HOME', false) %}
+  {% if 'url' in p %}
+    {% set url = '--url \'' ~ p.url ~ '\'' %}
+  {% else %}
+    {% set url = '' %}
+  {% endif %}
 
 elasticsearch_install_plugin_{{ p.name }}:
   cmd:
     - run
-    - name: {% if java_home %}export JAVA_HOME='{{ java_home }}' && {% endif %}{{ datamap.basepath|default('/usr/share/elasticsearch') }}/bin/plugin -v install '{{ p.name }}'
+    - name: {% if java_home %}export JAVA_HOME='{{ java_home }}' && {% endif %}{{ datamap.basepath|default('/usr/share/elasticsearch') }}/bin/plugin -v -t 30s {{ url }} install '{{ p.name }}'
     - unless: test -d '{{ datamap.basepath|default('/usr/share/elasticsearch') }}/plugins/{{ p.installed_name }}'
 {% endfor %}

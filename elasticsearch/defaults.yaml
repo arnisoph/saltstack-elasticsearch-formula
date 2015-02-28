@@ -16,14 +16,15 @@ Debian:
       path: /etc/default/elasticsearch
     main: {}
     logging: {}
-RedHat:
-  repo: {}
+CentOS:
+  repo: 
+    url: http://packages.elasticsearch.org/elasticsearch/1.3/centos
+    keyurl: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
   pkgs:
     - elasticsearch
   service: {}
   config:
     manage:
-      - defaults_file
       - main
     defaults_file:
       path: /etc/sysconfig/elasticsearch

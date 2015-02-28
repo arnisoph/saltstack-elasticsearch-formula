@@ -14,6 +14,15 @@ elasticsearch_repo:
     - name: {{ datamap.repo.debtype|default('deb') }} {{ datamap.repo.url }} {{ datamap.repo.dist }} {{ datamap.repo.comps }}
     - file: /etc/apt/sources.list.d/elasticsearch.list
     - key_url: {{ datamap.repo.keyurl }}
+  {% elif salt['grains.get']('os_family') == 'RedHat' %}
+elasticsearch_repo:
+  pkgrepo:
+    - managed
+    - name: elasticsearch.repo 
+    - humanname: "Elasticsearch repository"
+    - baseurl: {{ datamap.repo.url }}
+    - key_url: {{ datamap.repo.keyurl }}
+    - file: /etc/yum.repos.d/elasticsearch.repo
   {% endif %}
 {% endif %}
 

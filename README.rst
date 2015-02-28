@@ -52,7 +52,7 @@ Some states/ commands may refer to templates which aren't included in the files 
 Formula Dependencies
 --------------------
 
-None
+* custom execution module: https://github.com/bechtoldt/salt-modules (formhelper.get_default)
 
 Contributions
 -------------

@@ -1,7 +1,7 @@
 #!jinja|yaml
 
 {% from 'elasticsearch/defaults.yaml' import rawmap_osfam with context %}
-{% set datamap = salt['grains.filter_by'](rawmap_osfam, grain='os', merge=salt['pillar.get']('elasticsearch:lookup')) %}
+{% set datamap = salt['grains.filter_by'](rawmap_osfam, grain='os_family', merge=salt['pillar.get']('elasticsearch:lookup')) %}
 
 include: {{ datamap.sls_include|default([]) }}
 extend: {{ datamap.sls_extend|default({}) }}
@@ -92,6 +92,6 @@ elasticsearch_config_logging:
 elasticsearch_install_plugin_{{ p.name }}:
   cmd:
     - run
-    - name: {% if java_home %}export JAVA_HOME='{{ java_home }}' && {% endif %}{{ datamap.basepath|default('/usr/share/elasticsearch') }}/bin/plugin -v -t 10s --url '{{ p.url }}' --install '{{ p.name }}'
+    - name: {% if java_home %}export JAVA_HOME='{{ java_home }}' && {% endif %}{{ datamap.basepath|default('/usr/share/elasticsearch') }}/bin/plugin -v install '{{ p.name }}'
     - unless: test -d '{{ datamap.basepath|default('/usr/share/elasticsearch') }}/plugins/{{ p.installed_name }}'
 {% endfor %}

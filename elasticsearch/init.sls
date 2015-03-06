@@ -47,7 +47,7 @@ elasticsearch_defaults_file:
     - group: {{ f.group|default('root') }}
     - template: jinja
     - context:
-      datamap: {{ datamap }}
+      datamap: {{ datamap|json }}
     - watch_in:
       - service: elasticsearch
 {% endif %}
@@ -64,7 +64,7 @@ elasticsearch_config_main:
     - group: {{ f.group|default('root') }}
     - template: jinja
     - context:
-      datamap: {{ datamap }}
+      datamap: {{ datamap|json }}
     - watch_in:
       - service: elasticsearch
 {% endif %}
@@ -81,7 +81,7 @@ elasticsearch_config_logging:
     - group: {{ f.group|default('root') }}
     - template: jinja
     - context:
-      datamap: {{ datamap }}
+      datamap: {{ datamap|json }}
     - watch_in:
       - service: elasticsearch
 {% endif %}

@@ -1,13 +1,22 @@
+{# https://github.com/bechtoldt/saltstack-repos-formula #}
+repos:
+  lookup:
+    repos:
+      elasticsearch:
+        url: http://packages.elasticsearch.org/elasticsearch/1.4/debian
+        dist: stable
+        comps:
+          - main
+        keyurl: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+
 elasticsearch:
   lookup:
-    repo:
-      keyurl: salt://elasticsearch/files/GPG-KEY-elasticsearch
     defaults:
       JAVA_HOME: /opt/java/jdk/current/src
       ES_HEAP_SIZE: {{ (salt['grains.get']('mem_total')/2)|round|int }}m
     settings:
       cluster:
-        name: elasticsearch-la
+        name: myindex
       node:
         name: {{ salt['grains.get']('fqdn') }}
         master: true
@@ -27,23 +36,27 @@ elasticsearch:
       - name: elasticsearch-kopf
         installed_name: kopf
         url: 'https://gitlab.domain.de/github/elasticsearch-kopf/repository/archive.zip?ref=master'
-      - name: elasticsearch-paramedic
+      - name: karmi/elasticsearch-paramedic
         installed_name: paramedic
-        url: 'https://gitlab.domain.de/github/elasticsearch-paramedic/repository/archive.zip?ref=master'
 
+{# https://github.com/bechtoldt/saltstack-java-formula #}
 java:
-  jdk:
-    current_ver: 8u20
-    versions:
-      8u20:
-        source: http://fileserver.domain.de/share/java/jdk-8u20-linux-x64.tar.gz
-        source_hash: md5=ec7f89dc3697b402e2c851d0488f6299
-        version: jdk1.8.0_20
+  lookup:
+    manage:
+      jdk:
+        current_ver: 8u20
+        versions:
+          8u20:
+            source: http://fileserver.domain.de/share/java/jdk-8u20-linux-x64.tar.gz
+            source_hash: md5=ec7f89dc3697b402e2c851d0488f6299
+            version: jdk1.8.0_20
 
+{# https://github.com/bechtoldt/saltstack-sysctl-formula #}
 # See http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.x/setup-configuration.html#setup-configuration
 sysctl:
-  params:
-    - name: vm.swappiness
-      value: 0
-    - name: vm.max_map_count
-      value: 262144
+  lookup:
+    params:
+      - name: vm.swappiness
+        value: 0
+      - name: vm.max_map_count
+        value: 262144

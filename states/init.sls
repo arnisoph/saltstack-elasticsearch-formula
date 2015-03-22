@@ -1,30 +1,9 @@
 #!jinja|yaml
 
-{% from 'elasticsearch/defaults.yaml' import rawmap_osfam with context %}
-{% set datamap = salt['grains.filter_by'](rawmap_osfam, grain='os_family', merge=salt['pillar.get']('elasticsearch:lookup')) %}
+{% set datamap = salt['formhelper.get_defaults']('elasticsearch', saltenv, ['yaml'])['yaml'] %}
 
 include: {{ datamap.sls_include|default([]) }}
 extend: {{ datamap.sls_extend|default({}) }}
-
-{% if datamap.repo.manage|default(True) %}
-  {% if salt['grains.get']('os_family') == 'Debian' %}
-elasticsearch_repo:
-  pkgrepo:
-    - managed
-    - name: {{ datamap.repo.debtype|default('deb') }} {{ datamap.repo.url }} {{ datamap.repo.dist }} {{ datamap.repo.comps }}
-    - file: /etc/apt/sources.list.d/elasticsearch.list
-    - key_url: {{ datamap.repo.keyurl }}
-  {% elif salt['grains.get']('os_family') == 'RedHat' %}
-elasticsearch_repo:
-  pkgrepo:
-    - managed
-    - name: elasticsearch.repo
-    - humanname: "Elasticsearch repository"
-    - baseurl: {{ datamap.repo.url }}
-    - key_url: {{ datamap.repo.keyurl }}
-    - file: /etc/yum.repos.d/elasticsearch.repo
-  {% endif %}
-{% endif %}
 
 elasticsearch:
   pkg:
@@ -87,7 +66,7 @@ elasticsearch_config_logging:
 {% endif %}
 
 {% for p in datamap.plugins|default([]) %}
-  {% set java_home = salt['pillar.get']('elasticsearch:lookup:defaults:JAVA_HOME', false) %}
+  {% set java_home = datamap.defaults.JAVA_HOME|default(false) %}
   {% if 'url' in p %}
     {% set url = '--url \'' ~ p.url ~ '\'' %}
   {% else %}

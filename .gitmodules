@@ -1,0 +1,3 @@
+[submodule "test/vagrant"]
+	path = test/vagrant
+	url = https://github.com/bechtoldt/iac-vagrant.git

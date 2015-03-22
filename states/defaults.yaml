@@ -1,0 +1,22 @@
+kernel:
+  Linux:
+    pkgs:
+      - elasticsearch
+    config:
+      main: {}
+      logging: {}
+    service: {}
+os_family:
+  Debian:
+    config:
+      manage:
+        - defaults_file
+        - main
+      defaults_file:
+        path: /etc/default/elasticsearch
+  RedHat:
+    config:
+      manage:
+        - main
+      defaults_file:
+        path: /etc/sysconfig/elasticsearch

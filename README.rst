@@ -2,80 +2,82 @@
 saltstack-elasticsearch-formula
 ===============================
 
+.. image:: http://img.shields.io/github/tag/bechtoldt/saltstack-elasticsearch-formula.svg
+    :target: https://github.com/bechtoldt/saltstack-elasticsearch-formula/tags
+
+.. image:: http://issuestats.com/github/bechtoldt/saltstack-elasticsearch-formula/badge/issue
+    :target: http://issuestats.com/github/bechtoldt/saltstack-elasticsearch-formula
+
 .. image:: https://api.flattr.com/button/flattr-badge-large.png
     :target: https://flattr.com/submit/auto?user_id=bechtoldt&url=https%3A%2F%2Fgithub.com%2Fbechtoldt%2Fsaltstack-elasticsearch-formula
 
 Salt Stack Formula to set up and configure Elasticsearch, a distributed restful search and analytics server
 
-NOTICE BEFORE YOU USE
----------------------
-
-* This formula aims to follow the conventions and recommendations described at http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html#conventions-formula and http://docs.saltstack.com/en/latest/topics/best_practices.html
-
-TODO
-----
-
-None
+.. contents::
+    :backlinks: none
+    :local:
 
 Instructions
 ------------
 
-1. Add this repository as a `GitFS <http://docs.saltstack.com/topics/tutorials/gitfs.html>`_ backend in your Salt master config.
+Please refer to https://github.com/bechtoldt/formula-docs to learn how to use
+this formula, how it is built and how you can add your changes.
 
-2. Configure your Pillar top file (``/srv/pillar/top.sls``) and your pillars, see pillar.example.sls
+**NOTICE:** This formula uses the formhelper module which is a very useful Salt execution module that isn't available
+in upstream yet. Please consider retrieving it manually from https://github.com/bechtoldt/salt-modules and
+make it available to your Salt installation. Read `SaltStack documentation <http://docs.saltstack.com/en/latest/ref/modules/#modules-are-easy-to-write>`_ to
+see how this can be achieved.
 
-3. Include this Formula within another Formula or simply define your needed states within the Salt top file (``/srv/salt/top.sls``).
+Take a look at older `releases <https://github.com/bechtoldt/saltstack-elasticsearch-formula/releases>`_ to get a version that isn't using the formhelper
+yet (if any).
 
-Available states
-----------------
 
-.. contents::
-    :local:
-
-``elasticsearch``
-~~~~~~~~~~~~~~~~~
-Setup and configure Elasticsearch
-
-Additional resources
---------------------
-
-You may find the following formulas helpful, too:
-
-* `saltstack-java-formula <https://github.com/bechtoldt/saltstack-java-formula>`_
-* `saltstack-sysctl-formula <https://github.com/bechtoldt/saltstack-sysctl-formula>`_
-
-Templates
----------
-
-Some states/ commands may refer to templates which aren't included in the files folder (``elasticsearch/files``). Take a look at ``contrib/`` (if present) for e.g. template examples and place them in separate file roots (e.g. Git repository, refer to `GitFS <http://docs.saltstack.com/topics/tutorials/gitfs.html>`_) in your Salt master config.
-
-Formula Dependencies
---------------------
-
-* custom execution module: https://github.com/bechtoldt/salt-modules (formhelper.get_default)
-
-Contributions
+Compatibility
 -------------
 
-Contributions are always welcome. All development guidelines you have to know are
+See <TODO> file to see which Salt versions and operating systems are supported.
 
-* set a shebang in the first line (e.g. ``#!jinja|yaml``)
-* write clean code (proper YAML+Jinja syntax, no trailing whitespaces, no empty lines with whitespaces, LF only)
-* set sane default settings
-* test your code
-* update README.rst doc
 
-Salt Compatibility
-------------------
+Dependencies
+------------
 
-Tested with:
+None
 
-* 2014.7
 
-OS Compatibility
-----------------
+Contributing
+------------
 
-Tested with:
+Contributions are welcome! All development guidelines we ask you to follow can
+be found at https://github.com/bechtoldt/formula-docs.
 
-* GNU/ Linux Debian Wheezy
-* Ubuntu 14.04 (Trusty)
+In general:
+
+1. Fork this repo on Github
+2. Add changes, test them, update docs (README.rst) if possible
+3. Submit your pull request (PR) on Github, wait for feedback
+
+But it’s better to `file an issue <https://github.com/bechtoldt/saltstack-elasticsearch-formula/issues/new>`_ with your idea first.
+
+
+TODO
+----
+
+* add instructions how to use formhelper, add information about it in the
+  formula-docs (dependency), show up alternative?
+* table/ matrix: os/salt compatibility (dedicated file)
+* add list of available states
+* add tests
+
+
+Additional Resources
+--------------------
+
+Recommended formulas:
+
+* Java deployment: `saltstack-java-formula <https://github.com/bechtoldt/saltstack-java-formula>`_
+* sysctl configuration: `saltstack-sysctl-formula <https://github.com/bechtoldt/saltstack-sysctl-formula>`_
+* repo management: `saltstack-repos-formula <https://github.com/bechtoldt/saltstack-repos-formula>`_
+
+Further reading:
+
+* Documentation and Standardisation of SaltStack formulas: https://github.com/bechtoldt/formula-docs

@@ -74,6 +74,8 @@ Additional Resources
 
 Recommended formulas:
 
+* Logstash management: `saltstack-logstash-formula <https://github.com/bechtoldt/saltstack-logstash-formula>`_
+* Kibana user interface management: `saltstack-kibana-formula <https://github.com/bechtoldt/saltstack-kibana-formula>`_
 * Java deployment: `saltstack-java-formula <https://github.com/bechtoldt/saltstack-java-formula>`_
 * sysctl configuration: `saltstack-sysctl-formula <https://github.com/bechtoldt/saltstack-sysctl-formula>`_
 * repo management: `saltstack-repos-formula <https://github.com/bechtoldt/saltstack-repos-formula>`_

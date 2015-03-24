@@ -35,7 +35,7 @@ elasticsearch:
     plugins:
       - name: elasticsearch-kopf
         installed_name: kopf
-        url: 'https://gitlab.domain.de/github/elasticsearch-kopf/repository/archive.zip?ref=master'
+        #url: 'https://gitlab.domain.de/github/elasticsearch-kopf/repository/archive.zip?ref=master'
       - name: karmi/elasticsearch-paramedic
         installed_name: paramedic
 
@@ -47,7 +47,7 @@ java:
         current_ver: 8u20
         versions:
           8u20:
-            source: http://fileserver.domain.de/share/java/jdk-8u20-linux-x64.tar.gz
+            source: file:///vagrant/share/misc/jdk-8u20-linux-x64.tar.gz
             source_hash: md5=ec7f89dc3697b402e2c851d0488f6299
             version: jdk1.8.0_20
 

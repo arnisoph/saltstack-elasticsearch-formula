@@ -7,6 +7,8 @@ defaults:
   synced_folders:
     - src: assets/scripts/provision/
       dst: /vagrant/scripts
+    - src: ../share
+    - dst: /vagrant/share
   provision:
     - name: basic
 #    - name: saltstack_install

@@ -3,7 +3,7 @@ repos:
   lookup:
     repos:
       elasticsearch:
-        url: http://packages.elasticsearch.org/elasticsearch/1.4/debian
+        url: http://packages.elasticsearch.org/elasticsearch/1.5/debian
         dist: stable
         comps:
           - main

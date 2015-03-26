@@ -13,6 +13,11 @@ elasticsearch:
     - {{ datamap.service.ensure|default('running') }}
     - name: {{ datamap.service.name|default('elasticsearch') }}
     - enable: {{ datamap.service.enable|default(True) }}
+  cmd:
+    - wait
+    - name: sleep 5 && echo The daemon came back, going back to work.. {#- TODO: replace through service 'init_delay' param (not releasd yet) #}
+    - watch:
+      - service: elasticsearch
 
 {% if 'defaults_file' in datamap.config.manage|default([]) %}
   {% set f = datamap.config.defaults_file %}
@@ -78,4 +83,14 @@ elasticsearch_install_plugin_{{ p.name }}:
     - run
     - name: {% if java_home %}export JAVA_HOME='{{ java_home }}' && {% endif %}{{ datamap.basepath|default('/usr/share/elasticsearch') }}/bin/plugin -v -t 30s {{ url }} install '{{ p.name }}'
     - unless: test -d '{{ datamap.basepath|default('/usr/share/elasticsearch') }}/plugins/{{ p.installed_name|default(p.name) }}'
+{% endfor %}
+
+{% for k, v in datamap.indices|default({})|dictsort %}
+elasticsearch_index_{{ k }}:
+  elasticsearch_index:
+    - {{ v.ensure|default('present') }}
+    - name: {{ v.name|default(k) }}
+  {% if 'body' in v %}
+    - body: {{ v.body }}
+  {% endif %}
 {% endfor %}

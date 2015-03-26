@@ -23,8 +23,6 @@ elasticsearch:
         data: true
       index:
         number_of_replicas: 0
-      network:
-        host: {{ salt['grains.get']('ip_interfaces:eth1', ['127.0.0.1'])[0] }}
       gateway:
         expected_nodes: 1
       discovery:
@@ -35,9 +33,18 @@ elasticsearch:
     plugins:
       - name: elasticsearch-kopf
         installed_name: kopf
+        url: 'https://github.com/lmenezes/elasticsearch-kopf/archive/master.zip'
         #url: 'https://gitlab.domain.de/github/elasticsearch-kopf/repository/archive.zip?ref=master'
       - name: karmi/elasticsearch-paramedic
         installed_name: paramedic
+    indices:
+      testindex:
+        body:
+          settings:
+            index:
+              number_of_replicas: 0
+      testindex2:
+        ensure: absent
 
 {# https://github.com/bechtoldt/saltstack-java-formula #}
 java:
@@ -57,6 +64,9 @@ sysctl:
   lookup:
     params:
       - name: vm.swappiness
-        value: 0
+        value: 1
       - name: vm.max_map_count
         value: 262144
+
+
+#TODO pip install elasticsearch

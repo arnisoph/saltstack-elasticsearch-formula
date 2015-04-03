@@ -90,7 +90,17 @@ elasticsearch_index_{{ k }}:
   elasticsearch_index:
     - {{ v.ensure|default('present') }}
     - name: {{ v.name|default(k) }}
-  {% if 'body' in v %}
-    - body: {{ v.body }}
+  {% if 'definition' in v %}
+    - definition: {{ v.definition }}
+  {% endif %}
+{% endfor %}
+
+{% for k, v in datamap.index_templates|default({})|dictsort %}
+elasticsearch_indextemplate_{{ k }}:
+  elasticsearch_index_template:
+    - {{ v.ensure|default('present') }}
+    - name: {{ v.name|default(k) }}
+  {% if 'config' in v %}
+    - definition: {{ v.config }}
   {% endif %}
 {% endfor %}

@@ -2,9 +2,6 @@
 saltstack-elasticsearch-formula
 ===============================
 
-.. image:: http://img.shields.io/github/tag/bechtoldt/saltstack-elasticsearch-formula.svg
-    :target: https://github.com/bechtoldt/saltstack-elasticsearch-formula/tags
-
 .. image:: http://issuestats.com/github/bechtoldt/saltstack-elasticsearch-formula/badge/issue
     :target: http://issuestats.com/github/bechtoldt/saltstack-elasticsearch-formula
 

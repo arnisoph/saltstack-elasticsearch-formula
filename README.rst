@@ -8,6 +8,10 @@ saltstack-elasticsearch-formula
 .. image:: https://api.flattr.com/button/flattr-badge-large.png
     :target: https://flattr.com/submit/auto?user_id=bechtoldt&url=https%3A%2F%2Fgithub.com%2Fbechtoldt%2Fsaltstack-elasticsearch-formula
 
+.. image:: https://badges.gitter.im/Join%20Chat.svg
+   :alt: Join the chat at https://gitter.im/bechtoldt/saltstack-elasticsearch-formula
+   :target: https://gitter.im/bechtoldt/saltstack-elasticsearch-formula?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 Salt Stack Formula to set up and configure Elasticsearch, a distributed restful search and analytics server
 
 .. contents::
@@ -80,8 +84,3 @@ Recommended formulas:
 Further reading:
 
 * Documentation and Standardisation of SaltStack formulas: https://github.com/bechtoldt/formula-docs
-
-
-.. image:: https://badges.gitter.im/Join%20Chat.svg
-   :alt: Join the chat at https://gitter.im/bechtoldt/saltstack-elasticsearch-formula
-   :target: https://gitter.im/bechtoldt/saltstack-elasticsearch-formula?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge

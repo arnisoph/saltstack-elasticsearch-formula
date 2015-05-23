@@ -1,0 +1,25 @@
+name: saltstack-elasticsearch-formula
+source: https://github.com/bechtoldt/saltstack-elasticsearch-formula
+summary: SaltStack Formula to set up and configure Elasticsearch, a distributed restful search and analytics server
+todo:
+  - add instructions how to use formhelper, add information about it in the formula-docs (dependency), show up alternative?
+  - 'table/ matrix: os/salt compatibility (dedicated file)'
+  - add list of available states
+  - add tests
+extra:
+  recommended_formulas:
+    - descr: Logstash management
+      name: saltstack-logstash-formula
+      url: https://github.com/bechtoldt/saltstack-logstash-formula
+    - descr: Kibana user interface management
+      name: saltstack-kibana-formula
+      url: https://github.com/bechtoldt/saltstack-kibana-formula
+    - descr: Java deployment
+      name: saltstack-java-formula
+      url: https://github.com/bechtoldt/saltstack-java-formula
+    - descr: sysctl configuration
+      name: saltstack-sysctl-formula
+      url: https://github.com/bechtoldt/saltstack-sysctl-formula
+    - descr: repo management
+      name: saltstack-repos-formula
+      url: https://github.com/bechtoldt/saltstack-repos-formula

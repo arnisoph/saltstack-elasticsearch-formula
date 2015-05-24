@@ -32,13 +32,11 @@ Instructions
 Please refer to https://github.com/bechtoldt/formula-docs to learn how to use
 this formula, how it is built and how you can add your changes.
 
-**NOTICE:** This formula might uses the formhelper module which is a very useful Salt execution module that isn't available
-in upstream yet. Please consider retrieving it manually from https://github.com/bechtoldt/salt-modules and
-make it available to your Salt installation. Read `SaltStack documentation <http://docs.saltstack.com/en/latest/ref/modules/#modules-are-easy-to-write>`_ to
-see how this can be achieved.
 
-Take a look at older `releases <https://github.com/bechtoldt/saltstack-elasticsearch-formula/releases>`_ to get a version that isn't using the formhelper
-yet (if any).
+**NOTICE:** This formula might uses the formhelper module which is a very useful Salt execution module that isn't available in upstream yet. Please consider retrieving it manually from https://github.com/bechtoldt/salt-modules and make it available to your Salt installation. Read `SaltStack documentation <http://docs.saltstack.com/en/latest/ref/modules/#modules-are-easy-to-write>`_ to see how this can be achieved.
+
+Take a look at older releases (branches) to get a version that isn't using the formhelper yet (if any).
+
 
 
 Contributing
@@ -56,6 +54,15 @@ In general:
 But it’s better to `file an issue <https://github.com/bechtoldt/saltstack-elasticsearch-formula/issues/new>`_ with your idea first.
 
 
+TODO
+----
+
+* add instructions how to use formhelper, add information about it in the formula-docs (dependency), show up alternative?
+* table/ matrix: os/salt compatibility (dedicated file)
+* add list of available states
+* add tests
+
+
 Authors
 -------
 
@@ -65,15 +72,6 @@ Authors
 * The Gitter Badger <badger@gitter.im>
 * Tim O'Guin <tim.oguin@juiceanalytics.com>
 * Tyler Mandry <tmandry@gmail.com>
-
-
-TODO
-----
-
-* add instructions how to use formhelper, add information about it in the formula-docs (dependency), show up alternative?
-* table/ matrix: os/salt compatibility (dedicated file)
-* add list of available states
-* add tests
 
 
 Miscellaneous

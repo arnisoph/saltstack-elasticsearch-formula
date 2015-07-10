@@ -2,8 +2,10 @@
 defaults:
   domain: elasticsearch.local.arnoldbechtoldt.com
   base_box: DEV_Debian_78_min-virtualbox-v0.4-33-g914a15a.box
+  #base_box: DEV_CentOS_70_min-virtualbox-v0.4-29-g25c2bb4.box
   base_box_basedir: ../../../vagrant-devenv/shared/boxes
   osfam: debian
+  #osfam: rhel
   synced_folders:
     # Common folders
     - src: assets/scripts/provision
@@ -29,13 +31,20 @@ defaults:
       formulas:
         - name: elasticsearch
           base_dir: ../..
-        - name: repos
-          base_dir: ../../../saltstack-repos-formula
+        - name: bash
+          base_dir: ../../../saltstack-bash-formula
         - name: java
           base_dir: ../../../saltstack-java-formula
+        - name: repos
+          base_dir: ../../../saltstack-repos-formula
         - name: sysctl
           base_dir: ../../../saltstack-sysctl-formula
+        - name: users
+          base_dir: ../../../saltstack-users-formula
+        - name: zsh
+          base_dir: ../../../saltstack-zsh-formula
     - name: saltstack_config
     - name: saltstack_services
 nodes:
+  master1: {}
   client1: {}

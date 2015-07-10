@@ -1,0 +1,5 @@
+base:
+  '*':
+    - zsh
+    - common
+    - elasticsearch

@@ -92,3 +92,4 @@ Recommended formulas:
 Further reading:
 
 * Documentation and Standardisation of SaltStack formulas: https://github.com/bechtoldt/formula-docs
+* Blog post that shows Elasticsearch/Kibana deployment using this formula and Vagrant: https://arnoldbechtoldt.com/blog/packer-vagrant-to-boostrap-a-test-infrastructure-pt3

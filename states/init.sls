@@ -1,6 +1,6 @@
 #!jinja|yaml
 
-{% set datamap = salt['formhelper.get_defaults']('elasticsearch', saltenv, ['yaml'])['yaml'] %}
+{% set datamap = salt['formhelper.get_defaults']('elasticsearch', saltenv) %}
 
 include: {{ datamap.sls_include|default([]) }}
 extend: {{ datamap.sls_extend|default({}) }}

@@ -1,0 +1,23 @@
+{%- set _default_settings = {
+  'ES_USER': 'elasticsearch',
+  'ES_GROUP': 'elasticsearch',
+  'ES_HEAP_SIZE': '2g',
+  'ES_HEAP_NEWSIZE': '',
+  'ES_DIRECT_SIZE': '',
+  'MAX_OPEN_FILES': 65535,
+  'MAX_LOCKED_MEMORY': 'unlimited',
+  'MAX_MAP_COUNT': 262144,
+  'LOG_DIR': '/var/log/elasticsearch',
+  'DATA_DIR': '/var/lib/elasticsearch',
+  'WORK_DIR': '/tmp/elasticsearch',
+  'CONF_DIR': '/etc/elasticsearch',
+  'CONF_FILE': '/etc/elasticsearch/elasticsearch.yml',
+  'ES_JAVA_OPTS': '',
+  'RESTART_ON_UPGRADE': 'true',
+  }
+-%}
+{%- set _defaults = datamap.defaults|default(_default_settings) -%}
+
+{%- for k, v in _defaults|dictsort -%}
+{{ k }}="{{ v }}"
+{% endfor -%}

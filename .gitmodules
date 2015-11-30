@@ -1,3 +1,9 @@
 [submodule "test/vagrant"]
 	path = test/vagrant
 	url = https://github.com/bechtoldt/iac-vagrant.git
+[submodule "test/docker"]
+	path = test/docker
+	url = https://github.com/bechtoldt/salt-formula-docker-test
+[submodule "test/docker-assets/assets/salt-modules"]
+	path = test/docker-assets/assets/salt-modules
+	url = https://github.com/bechtoldt/salt-modules

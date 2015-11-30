@@ -1,0 +1,35 @@
+sudo: required
+dist: trusty
+
+services:
+  - docker
+
+env:
+  - TEST_OS=debian_7 TEST_SALTVERSION=2015.5.6
+  - TEST_OS=debian_7 TEST_SALTVERSION=2015.8.0
+  - TEST_OS=debian_7 TEST_SALTVERSION=2015.8.1
+  - TEST_OS=debian_7 TEST_SALTVERSION=2015.8.2
+
+  - TEST_OS=debian_8 TEST_SALTVERSION=2015.5.6
+  - TEST_OS=debian_8 TEST_SALTVERSION=2015.8.0
+  - TEST_OS=debian_8 TEST_SALTVERSION=2015.8.1
+  - TEST_OS=debian_8 TEST_SALTVERSION=2015.8.2
+
+  - TEST_OS=centos_6 TEST_SALTVERSION=2015.5.6
+  - TEST_OS=centos_6 TEST_SALTVERSION=2015.8.0
+  - TEST_OS=centos_6 TEST_SALTVERSION=2015.8.1
+  - TEST_OS=centos_6 TEST_SALTVERSION=2015.8.2
+
+#  - TEST_OS=centos_7 TEST_SALTVERSION=2015.5.6
+#  - TEST_OS=centos_7 TEST_SALTVERSION=2015.8.0
+#  - TEST_OS=centos_7 TEST_SALTVERSION=2015.8.1
+#  - TEST_OS=centos_7 TEST_SALTVERSION=2015.8.2
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -yV ed tree
+  - git submodule update --init --recursive -- test/docker
+  - git submodule update --init --recursive -- test/docker-assets
+
+script:
+  - ./test/docker/run . elasticsearch
